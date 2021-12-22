@@ -65,7 +65,7 @@ The <b>demo form</b> is for the users who do not have their own data, they just 
 
 <h4> a) Iris Classification </h4>
 
-<img src="/static/iris_upload.png" alt="iris_upload" width="20%"/> <img src="/static/iris_demo.png" alt="iris_demo" width="20%"/> <img src="/static/iris_result.png" alt="iris_result" width="20%"/> <img src="/static/iris_full.png" alt="iris_full" width="20%"/>
+<img src="/static/iris_upload.png" alt="iris_upload" width="25%"/> <img src="/static/iris_demo.png" alt="iris_demo" width="25%"/> <img src="/static/iris_result.png" alt="iris_result" width="25%"/> <img src="/static/iris_full.png" alt="iris_full" width="25%"/>
 
 <h2>1. Problem Statement: </h2>
 <p>
