@@ -171,3 +171,66 @@ Different classification metrics are used to check the efficiency of the validat
 <li><b>Confusion Matrix</b>.</li>
 </ul>
 
+
+<h3> c) Fake News Classification </h3>
+
+<img src="" alt="" width="30%" /> <img src="" alt="" width="30%" /> <img src="" alt="" width="30%" />
+
+<h3>1. Dataset: </h3>
+  <p>
+      The dataset can be found on <a href="https://www.kaggle.com/c/fake-news/data" target="_blank"><b style="color: #22D3EE;">Kaggle</b></a>.
+  </p>
+  
+  <h3>2. Steps taken to train the model: </h3>
+  <ul><li>Create the NLP architecture. Here's only one kind of architecture is used to train:
+          <ul>
+              <li>Simple Custom NLP Model <a href="/static/FakeNewsClassifier.svg" target="_blank" ><b style="color: #22D3EE;">architecture</b></a></li>
+          </ul>
+      </li>
+      <li>Load the dataset containing the text data.</li>
+      <li>Combine all the text column data into one column</li>
+      <li>Using SnowballStemmer to filter different characters which we do not need</li>
+      <li>Tokenize the words using keras tokenizer</li>
+      <li>All the rows are fixed to a fixed column length size using padding. Here the max length used is <b>100</b></li>
+      <li>Split the padded rows using <b>Train-Test-Split</b></li>
+      <li>Construct the layers for the simple architecture</li>
+      <li>All the word are vectorized of length <b>1000</b> using <b>Word2Vec</b> in the <b>Embedding layer</b> of keras</li>
+      <li><b>Fit</b> the model with the NLP architecture with <b>5</b> epochs and batch size of <b>32</b>.</li>
+  </ul>
+  <p><b style="color:red;">NOTE:</b>Even though the dataset contains multiple columns. Here only some columns are used to train the model
+      as the no. of words gets bigger and bigger and so is the vector size and the vocabulary size. So the stemming process will take a lot of time.
+  </p>
+  <p><b style="color:red;">NOTE:</b>The number of epochs is chosen to be this small because of limitation of processing power.
+      Since the epochs are small, the <b>accuracy</b> is around <b>99.92%</b> and <b>validation-accuracy</b> of <b>99.48%</b> for the simple model.
+  </p>
+
+  <h3>3. Metrics Calculation: </h3>
+  <p>
+      Different classification metrics are used to check the efficiency of the validated model given the actual label data:
+  </p>
+  <ul>
+      <li><b>Accuracy Score</b>.</li>
+      <li><b>Classification Report</b>.</li>
+      <li><b>F1 Score</b>.</li>
+      <li><b>Precision Score</b>.</li>
+      <li><b>Recall Score</b>.</li>
+      <li><b>Confusion Matrix</b>.</li>
+  </ul>
+
+<h3> d) Mask Token Prediction </h3>
+
+  Using the models **BERT** and **DistilBERT** from [Huggingface](https://huggingface.co)
+  
+  <img src="" alt="" width="30%" /> <img src="" alt="" width="30%" />
+  
+<h3> e) Text Generation </h3>
+
+  Using the models **GPT2** and **DistilGPT2** from [Huggingface](https://huggingface.co)
+  
+  <img src="" alt="" width="30%" /> <img src="" alt="" width="30%" />
+  
+<h3> e) Conversation </h3>
+
+  Using the models **Blender Bot Small** from [Huggingface](https://huggingface.co)
+  
+  <img src="" alt="" width="30%" /> <img src="" alt="" width="30%" />
