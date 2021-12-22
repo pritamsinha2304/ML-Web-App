@@ -65,6 +65,8 @@ The <b>demo form</b> is for the users who do not have their own data, they just 
 
 <h4> a) Iris Classification </h4>
 
+<img src="" alt="" />
+
 <h2>1. Problem Statement: </h2>
 <p>
   We need to classify species of Iris flower based on some features of the flower.
@@ -147,3 +149,10 @@ The <b>demo form</b> is for the users who do not have their own data, they just 
   <li><b>Recall Score</b>.</li>
   <li><b>Confusion Matrix</b>.</li>
 </ul>
+
+
+<h4> b) Cat Dog Classification </h4>
+
+<img src="" alt="cat_dog" />
+
+
