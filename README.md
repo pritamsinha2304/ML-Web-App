@@ -24,6 +24,6 @@ Since these techniques work on different inputs so various of these techniques c
 
 ## What does it do ?
 
-![Main Page](/static/Screenshot 2021-12-22 202851.png)
+![Main Page](./static/Screenshot 2021-12-22 202851.png)
 
 This web app takes on user inputs and give out prediction based on user options.
