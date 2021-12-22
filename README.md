@@ -41,7 +41,7 @@ Since these techniques work on different inputs so various of these techniques c
 
 <h3> Projects </h3>
 
-<img src="" alt="projects" />
+<img src="/static/projects.png" alt="projects" width="30%"/>
 
 <p>There are currently 4 types of projects been implemented across multiple machine learning techniques- </p>
 <ul>
@@ -65,7 +65,9 @@ The <b>demo form</b> is for the users who do not have their own data, they just 
 
 <h4> a) Iris Classification </h4>
 
-<img src="" alt="" />
+<img src="/static/iris_upload.png" alt="iris_upload" width="30%"/>
+<img src="/static/iris_demo.png" alt="iris_demo" width="30%"/>
+<img src="/static/iris_results.png" alt="iris_results" width="30%"/>
 
 <h2>1. Problem Statement: </h2>
 <p>
