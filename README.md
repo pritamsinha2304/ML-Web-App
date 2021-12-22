@@ -219,18 +219,18 @@ Different classification metrics are used to check the efficiency of the validat
 
 <h3> d) Mask Token Prediction </h3>
 
-  Using the models **BERT** and **DistilBERT** from <a href="https://huggingface.co/" target="_blank">Huggingface</a>
+  Using the models <a href="https://huggingface.co/bert-base-multilingual-cased" target="_blank"><b>BERT</b></a> and <a href="https://huggingface.co/distilbert-base-multilingual-cased" target="_blank"><b>DistilBERT</b></a> from <a href="https://huggingface.co/" target="_blank">Huggingface</a>
   
-  <img src="/static/mask_upload.png" alt="mask_upload" width="30%" /> <img src="/static/mask_result" alt="mask_result" width="30%" />
+  <img src="/static/mask_upload.png" alt="mask_upload" width="30%" /> <img src="/static/mask_result.png" alt="mask_result" width="30%" />
   
 <h3> e) Text Generation </h3>
 
-  Using the models **GPT2** and **DistilGPT2** from [Huggingface](https://huggingface.co)
+  Using the models <a href="https://huggingface.co/gpt2" target="_blank"><b>GPT2</b></a> and <a href="https://huggingface.co/distilgpt2" target="_blank"><b>DistilGPT2</b></a> from <a href="https://huggingface.co/" target="_blank"><b>Huggingface</b></a>
   
   <img src="/static/textgenerate_upload.png" alt="textgenerate_upload" width="30%" /> <img src="/static/textgenerate_result.png" alt="textgenerate_result" width="30%" />
   
 <h3> f) Conversation </h3>
 
-  Using the models **Blender Bot Small** from [Huggingface](https://huggingface.co)
+  Using the models <a href="https://huggingface.co/facebook/blenderbot_small-90M" target="_blank"><b>Blenderbot Small</b></a> from <a href="https://huggingface.co/" target="_blank"><b>Huggingface</b></a>
   
   <img src="/static/conversation_upload.png" alt="conversation_upload" width="30%" /> <img src="/static/conversation_result.png" alt="conversation_result" width="30%" />
