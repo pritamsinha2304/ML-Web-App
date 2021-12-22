@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>NLP</title>
+{% include 'html_head.html' %}
+<body class="nlp_body">
+{% include 'navigation.html' %}
+
+<!-- Flash Message -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }} message" style="text-align: center;">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<!-------------->
+
+
+
+    <div class="nlp">
+        <h2>Pick the services you want to see</h2>
+        <form method="post" enctype="multipart/form-data" id="nlp_form">
+            {{ nlpformchoice.csrf_token }}
+
+            {{ nlpformchoice.form_choice.label }}
+            {% for subfield in nlpformchoice.form_choice %}
+                <p>{{ subfield }} {{ subfield.label }}</p>
+                <br/>
+            {% endfor %}
+            {% for error in nlpformchoice.form_choice.errors %}
+                <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+        </form>
+    </div>
+
+    <div class="fill_mask">
+        <h2>Masked Word Prediction</h2>
+        <form method="post" enctype="multipart/form-data" id="fill_mask_form">
+            {{ nlpfillmask.csrf_token }}
+
+            <h3><b>Type a text with [MASK] keyword</b></h3>
+            <h4 style="color: red">* Required</h4>
+            {{ nlpfillmask.text }}
+            {% for error in nlpfillmask.text.errors %}
+                <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+            <br/>
+
+            <h3><b>Select the model you want to use</b></h3>
+            <h4 style="color: red">* Required</h4>
+            {{ nlpfillmask.model }}
+            {% for error in nlpfillmask.model.errors %}
+                <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+            <br/>
+            {{ nlpfillmask.upload }}
+            {% for error in nlpfillmask.upload.errors %}
+                <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+        </form>
+    </div>
+
+    <div class="text_generation">
+        <h2>Text Generation</h2>
+        <form method="post" enctype="multipart/form-data" id="text_generation_form">
+            {{ nlptextgeneration.csrf_token }}
+
+            <h3><b>Give a brief context to generate</b></h3>
+            <p style="font-size: 20px"><i>Example: And then she started to walk</i></p>
+            <h4><b style="color: #F87171">* Required</b></h4>
+            {{ nlptextgeneration.text_field }}
+            {% for error in nlptextgeneration.text_field.errors %}
+                <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+            <br/>
+
+            <h3><b>Select the model you want to use</b></h3>
+            <p style="font-size: 20px"><i>Currently only 2 model is used</i></p>
+            <h4><b style="color: #F87171">* Required</b></h4>
+            {{ nlptextgeneration.model_field }}
+            {% for error in nlptextgeneration.model_field.errors %}
+                <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+            <br/>
+
+            <h3><b>Give a seed number for randomness</b></h3>
+            <p style="font-size: 20px"><i>By default: 42</i></p>
+            <h4><b style="color: #2846C9">Optional</b></h4>
+            {{ nlptextgeneration.seed_field }}
+            {% for error in nlptextgeneration.seed_field.errors %}
+                <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+            <br/>
+
+            <h3><b>What is maximum length of generated text you want ?</b></h3>
+            <p style="font-size: 16px;"><b style="color: red; font-size: 16px;">Warning NOTE: </b>The longer the length is, the longer it will take to generate</p>
+            <p style="font-size: 20px;"><i>By default: 50</i></p>
+            <h4><b style="color: #2846C9">Optional</b></h4>
+            {{ nlptextgeneration.token_length_field }}
+            {% for error in nlptextgeneration.token_length_field.errors %}
+                <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+            <br/>
+
+            <h3><b>How many generated text do you want ?</b></h3>
+            <p style="font-size: 16px;"><b style="color: red; font-size: 16px;">Warning NOTE: </b>The more sequence you want to generate, the longer it will take to generate</p>
+            <p style="font-size: 20px"><i>By default: 5</i></p>
+            <h4><b style="color: #2846C9">Optional</b></h4>
+            {{ nlptextgeneration.sequence_field }}
+            {% for error in nlptextgeneration.sequence_field.errors %}
+                <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+            <br/>
+
+            {{ nlptextgeneration.upload_field }}
+            {% for error in nlptextgeneration.upload_field.errors %}
+                <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+        </form>
+    </div>
+
+</body>
+<script>
+    $(document).ready(function(){
+        $('.fill_mask').hide()
+        $('.text_generation').hide()
+        $("input[type$='radio']").click(function(){
+            var test = $(this).val()
+            if(test === 'fill_mask'){
+                $('.fill_mask').fadeIn('slow')
+                $('.text_generation').fadeOut('slow')
+            }
+            if(test === 'text_generation'){
+                $('.fill_mask').fadeOut('slow')
+                $('.text_generation').fadeIn('slow')
+            }
+        });
+    });
+</script>
+
+</html>

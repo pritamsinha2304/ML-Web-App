@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Home</title>
+{% include 'html_head.html' %}
+
+<body class="home_body">
+
+	{% include 'navigation.html' %}
+
+	<div class="welcome">
+		<h1>Welcome to my Machine Learning Page</h1>
+		<svg class="arrows">
+              <path class="a1" d="M0 0 L30 32 L60 0"></path>
+              <path class="a2" d="M0 20 L30 52 L60 20"></path>
+              <path class="a3" d="M0 40 L30 72 L60 40"></path>
+		</svg>
+	</div>
+	<div class="about_page" id="about_page">
+		<h2>What is this page about ?</h2>
+		<p>
+			This page holds the implementation of machine learning models. The models have been fitted and trained over a particular datasets.
+			Based on different types of applications and different types of algorithms, the outcomes will be different for different
+			datasets. Each dataset went through machine learning cycle. Starting with-
+		</p>
+		<ul>
+			<li>EDA (Exploratory Data Analysis)</li>
+			<li>Feature Engineering</li>
+			<li>Selection of Model</li>
+			<li>Training</li>
+			<li>Validation</li>
+		</ul>
+		<p>
+			The main objective of this page is to hold different machine learning models for different problem and
+			different datasets.
+			Each section will hold different problem statement, final goal/objective with their respective datasets.
+			Each section will predict and output different results/statistics based on the problem type.
+		</p>
+		<p>
+			<i>This page is only for showcasing purpose.</i>
+		</p>
+	</div>
+	<div class="about_me" id="about_me">
+		<h2>About Me ?</h2>
+		<p>
+			My name is <i style="color:yellow;">Pritam Sinha</i>, a B.Tech Computer Science Engineer and also a Fresher.
+			Love to do lot of things. I got my interest in Machine Learning, Data Science when I was trying to train a
+			model. Growing good at Python, Data Science, ML, DL. Love playing video games.
+		</p>
+	</div>
+
+</body>
+
+</html>

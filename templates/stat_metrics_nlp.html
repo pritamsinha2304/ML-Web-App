@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Stat Metrics NLP</title>
+{% include 'html_head.html' %}
+<script type="text/javascript" src="/static/model.js"></script>
+<link rel="stylesheet" href="/static/model.css" type="text/css">
+<body class="stat_metric_nlp">
+
+{% include 'navigation.html' %}
+
+<!-- Flash Message -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert alert-{{ category }} message">
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<!-------------->
+
+{% if 'fill-mask' in table %}
+    <div class="fm">
+        <h2 style="font-family: 'Courgette', cursive; font-size: 30px; color: black; border-bottom: 2px solid #006064; padding-top: 5px;">Fill Mask</h2>
+        <table id="fm_table" class="display cell-border" style="width:100%">
+            <caption style="text-align:center; font-family: 'Montserrat', sans-serif;">Table 1: Predictions</caption>
+            <thead style="width:100%">
+                <tr>
+                    <th>Text</th>
+                    <th>Score</th>
+                    <th>Sequence</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dict in table['fill-mask']['result'] %}
+                    <tr>
+                        <td>{{ table['fill-mask']['text'][0] }} <b>[MASK]</b> {{ table['fill-mask']['text'][1] }}</td>
+                        <td><b>{{ dict['token_str'] }}</b>: {{ dict['score'] ~ " " ~ '%' }}</td>
+                        <td>{{ dict['sequence'][0] }} <b>{{ dict['token_str'] }}</b> {{ dict['sequence'][1] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endif %}
+
+{% if 'text-generation' in table %}
+    <div class="tg">
+        <h2 style="font-family: 'Courgette', cursive; font-size: 30px; color: black; border-bottom: 2px solid #006064; padding-top: 5px;">Text Generation</h2>
+        <table id="tg_table" class="display cell-border" style="width:100%">
+            <caption style="text-align:center; font-family: 'Montserrat', sans-serif;">Table 1: Predictions</caption>
+            <thead style="width:100%">
+                <tr>
+                    <th>Text</th>
+                    <th>Generated Sequence</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dict in table['text-generation']['result'] %}
+                    <tr>
+                        <td>{{ table['text-generation']['text'] }}</td>
+                        <td>{{ table['text-generation']['text'] }} <b>{{ dict['generated_text'][1] }}</b></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endif %}
+
+</body>
+<script>
+    $('#fm_table').DataTable( {
+    'fixedHeader': true,
+    "responsive": true,
+    "scrollX": true,
+    'lengthMenu': [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+    'lengthChange': true,
+    'dom': 'Blfrtip',
+    'pagingType': "full_numbers",
+    'buttons': [ 'copy', 'excel', 'pdf', 'csv', 'print', 'colvis' ],
+    'bAutoWidth': true
+    });
+
+    $('#tg_table').DataTable( {
+    'fixedHeader': true,
+    "responsive": true,
+    "scrollX": true,
+    'lengthMenu': [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+    'lengthChange': true,
+    'dom': 'Blfrtip',
+    'pagingType': "full_numbers",
+    'buttons': [ 'copy', 'excel', 'pdf', 'csv', 'print', 'colvis' ],
+    'bAutoWidth': true
+    });
+</script>
+</html>

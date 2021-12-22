@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Original data</title>
+{% include 'html_head.html' %}
+<body style="background: #1F2833">
+
+{% include 'navigation.html' %}
+
+<div class="data_div">
+    <h2 style="padding-left: 10px;">Iris Dataset</h2>
+    <table id="data_tab" class="display nowrap cell-border" style="width:100%">
+        <caption style="text-align:center; font-weight: bold;">Table 1: Original data</caption>
+        <thead style="width:100%">
+        <tr>
+            <th></th>
+            {% for key in df[0].keys() %}
+                <th>{{key}}</th>
+            {% endfor %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for key in df.keys() %}
+        <tr>
+            <td>{{key}}</td>
+            {% for value in df[key].values() %}
+                <td>{{ value }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+<div class="data_div" style="margin-top: 20px;">
+    <h2 style="padding-left: 10px;">Data Statistics using Dataprep</h2>
+    <a href="{{ url_for('iris_stat') }}" target="_blank" style="padding-left: 20px; font-size: 20px; font-weight: bold;">EDA with Dataprep</a>
+</div>
+
+</body>
+
+<script>
+
+ $('#data_tab').DataTable( {
+    'fixedHeader': true,
+    "responsive": true,
+    "scrollX": true,
+    'lengthMenu': [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+    'lengthChange': true,
+    'dom': 'Blfrtip',
+    'pagingType': "full_numbers",
+    'buttons': [ 'copy', 'excel', 'pdf', 'csv', 'print', 'colvis' ]
+});
+
+
+</script>
+
+</html>

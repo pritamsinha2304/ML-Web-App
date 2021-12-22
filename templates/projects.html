@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Projects</title>
+{% include 'html_head.html' %}
+<body class="projects_body">
+{% include 'navigation.html' %}
+
+    <div id="all_projects">
+
+        <div id="project_1" style="background: linear-gradient(90deg, hsla(0, 0%, 97%, 1) 0%, hsla(214, 58%, 10%, 1) 100%, hsla(214, 53%, 63%, 1) 100%);">
+            <ul>
+                <li><a href="{{url_for('iris')}}" target="_blank" style="color: #2A0944;">Iris Dataset Classification</a></li>
+            </ul>
+            <ul style="padding-left: 50px;">
+                <li>Tags:
+                    <i>classification</i>
+                    <i>multiclass</i>
+                    <i>agriculture</i>
+                    <i>plants</i>
+                </li>
+            </ul>
+        </div>
+
+        <div id="project_2" style="background: linear-gradient(90deg, hsla(0, 0%, 97%, 1) 0%, hsla(214, 58%, 10%, 1) 100%, hsla(214, 53%, 63%, 1) 100%);">
+            <ul>
+                <li><a href="{{url_for('cog')}}" target="_blank" style="color: #2A0944;">Cat Dog Classification</a></li>
+            </ul>
+            <ul style="padding-left: 50px;">
+                <li>Tags:
+                    <i>classification</i>
+                    <i>binary</i>
+                    <i>pets</i>
+                    <i>identification</i>
+                    <i>images</i>
+                </li>
+            </ul>
+        </div>
+
+        <div id="project_3" style="background: linear-gradient(90deg, hsla(0, 0%, 97%, 1) 0%, hsla(214, 58%, 10%, 1) 100%, hsla(214, 53%, 63%, 1) 100%);">
+            <ul>
+                <li><a href="{{url_for('fakenews')}}" target="_blank" style="color: #2A0944;">Fake News Classification</a></li>
+            </ul>
+            <ul style="padding-left: 50px;">
+                <li>Tags:
+                    <i>classification</i>
+                    <i>binary</i>
+                    <i>news</i>
+                    <i>articles</i>
+                    <i>natural language processing</i>
+                </li>
+            </ul>
+        </div>
+
+        <div id="project_4" style="background: linear-gradient(90deg, hsla(0, 0%, 97%, 1) 0%, hsla(214, 58%, 10%, 1) 100%, hsla(214, 53%, 63%, 1) 100%);">
+            <ul>
+                <li><a href="{{url_for('nlp')}}" target="_blank" style="color: #2A0944;">Multiple NLP Techniques</a></li>
+            </ul>
+            <ul style="padding-left: 50px;">
+                <li>Tags:
+                    <i>masked language modelling</i>
+                    <i>fill mask</i>
+                    <i>text generation</i>
+                    <i>bert</i>
+                    <i>distilbert</i>
+                    <i>gpt2</i>
+                    <i>distilgpt2</i>
+                    <i>hugging face</i>
+                    <i>transformers</i>
+                    <i>natural language processing</i>
+                </li>
+            </ul>
+        </div>
+
+        <div id="project_5" style="background: linear-gradient(90deg, hsla(0, 0%, 97%, 1) 0%, hsla(214, 58%, 10%, 1) 100%, hsla(214, 53%, 63%, 1) 100%);">
+            <ul>
+                <li><a href="{{url_for('conversation')}}" target="_blank" style="color: #2A0944;">Conversation</a></li>
+            </ul>
+            <ul style="padding-left: 50px;">
+                <li>Tags:
+                    <i>masked language modelling</i>
+                    <i>hugging face</i>
+                    <i>transformers</i>
+                    <i>natural language processing</i>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

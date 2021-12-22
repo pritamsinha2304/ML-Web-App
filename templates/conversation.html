@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Conversation</title>
+{% include 'html_head.html' %}
+<script src="https://code.jquery.com/jquery-3.5.1.js"
+          integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+          crossorigin="anonymous"></script>
+<body class="conversation_body">
+{% include 'navigation.html' %}
+
+<!-- Flash Message -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }} message" style="text-align: center;">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<!-------------->
+
+    <div id="chat_messages">
+
+    </div>
+
+    <div class="conv">
+        <form method="post" enctype="multipart/form-data" id="conversation_form">
+            {{ nlpconversation.csrf_token }}
+
+            <h3 style="color: white;">Start a conversation</h3>
+            <h4><b style="color: #FF5C58;">* Required</b></h4>
+            {{ nlpconversation.text }}
+            {% for error in nlpconversation.text.errors %}
+                <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+            <br/>
+
+            <h3 style="color: white;">Select the model to use to generate</h3>
+            <h4><b style="color: #FF5C58;">* Required</b></h4>
+            {{ nlpconversation.model }}
+            {% for error in nlpconversation.model.errors %}
+                <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+            <br/>
+
+            <h3 style="color: white;">What is the minimum length for response should be ?</h3>
+            <p style="font-size: 20px; color: white;"><i>By default: 32</i></p>
+            <h4><b style="color: #2846C9;">Optional</b></h4>
+            {{ nlpconversation.min_length_for_response }}
+            {% for error in nlpconversation.min_length_for_response.errors %}
+                <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+            <br/>
+
+            <h3 style="color: white;">How many generated text do you want ?</h3>
+            <p style="font-size: 20px; color: white;"><i>By default: 10</i></p>
+            <h4><b style="color: #2846C9;">Optional</b></h4>
+            {{ nlpconversation.minimum_tokens }}
+            {% for error in nlpconversation.minimum_tokens.errors %}
+                <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+            <br/>
+
+            <p style="font-size: 20px; color: white; margin-top: 10px;"><b style="color: #FF5C58;">Heads Up NOTE:</b> The generation of text takes a little time.
+                So press Enter once and don't press multiple times. On pressing first time, it will take a little time to generate sentence.</p>
+            <p id="generating_message" style="display: none; color: white; font-size: 30px; text-align: center;">Generating Sequence.....Please wait for a moment.</p>
+            {{ nlpconversation.submit }}
+            {% for error in nlpconversation.submit.errors %}
+                <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+        </form>
+    </div>
+
+</body>
+<script>
+
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", "{{ nlpconversation.csrf_token._value() }}")
+            }
+        }
+    })
+
+    $(document).on('submit','#conversation_form',function(e){
+        $('#submit').fadeOut('slow');
+        $('#generating_message').css("display", "block");
+      e.preventDefault();
+      var url = "{{ url_for('conversation') }}";
+      $.ajax({
+        type:'POST',
+        url:url,
+        data: {
+            "text": $('#text').val(),
+            "model": $('#model').val(),
+            "min_length_for_response": $('#min_length_for_response').val(),
+            "minimum_tokens": $('#minimum_tokens').val()
+        },
+        success:function(){
+            var div = document.createElement("div")
+            div.style.background = "rgba(0,0,0,0.0)";
+            div.style.paddingRight = "10px";
+            div.style.marginLeft = "500px";
+            div.style.fontSize = "20px";
+            div.style.color = "white";
+            div.style.marginBottom = "30px";
+
+            var txt_div = document.createElement("div")
+            txt_div.style.background = "grey";
+            txt_div.style.paddingLeft = "10px";
+            txt_div.style.paddingRight = "10px";
+            txt_div.style.textAlign = "justify";
+            txt_div.style.overflowWrap = "break-word";
+            txt_div.style.wordBreak = "break-all";
+            txt_div.style.borderRadius = "10px";
+            txt_div.style.width = "auto";
+            txt_div.style.display = "block";
+            txt_div.style.marginRight = "55px";
+
+            txt_div.innerHTML = $('#text').val();
+
+            var img = document.createElement('div')
+            img.style.backgroundImage = "url('/static/user.png')";
+            img.style.backgroundSize = "cover";
+            img.style.borderRadius = "50%";
+            img.style.width = "50px";
+            img.style.height = "50px";
+            img.style.float = "right";
+
+            div.appendChild(img)
+            div.appendChild(txt_div)
+            document.getElementById("chat_messages").appendChild(div);
+        },
+        error: function(e) {
+            console.log(e);
+        }
+      }).done(function(response){
+            $('#submit').fadeIn('slow');
+            $('#generating_message').css("display", "none");
+            $('#text').val('');
+
+            var resp = document.createElement("div")
+            resp.style.background = "rgba(0,0,0,0.0)";
+            resp.style.marginRight = "500px";
+            resp.style.paddingLeft = "10px";
+            resp.style.fontSize = "20px";
+            resp.style.color = "white";
+            resp.style.marginBottom = "30px";
+
+            var res_mark = document.createElement("div")
+            res_mark.style.background = "grey";
+            res_mark.style.paddingLeft = "10px";
+            res_mark.style.paddingRight = "10px";
+            res_mark.style.borderRadius = "10px";
+            res_mark.style.textAlign = "justify";
+            res_mark.style.overflowWrap = "break-word";
+            res_mark.style.wordBreak = "break-all";
+            res_mark.style.width = "auto";
+            res_mark.style.marginLeft = "55px";
+
+            res_mark.innerHTML = response;
+
+            var res_img = document.createElement('div')
+            res_img.style.backgroundImage = "url('/static/artificial-intelligence.png')";
+            res_img.style.backgroundSize = "cover";
+            res_img.style.borderRadius = "50%";
+            res_img.style.width = "50px";
+            res_img.style.height = "50px";
+            res_img.style.float = "left";
+
+            resp.appendChild(res_img);
+            resp.appendChild(res_mark);
+            document.getElementById("chat_messages").appendChild(resp);
+        });
+    });
+</script>
+
+
+
+</html>

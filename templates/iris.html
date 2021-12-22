@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Iris</title>
+{% include 'html_head.html' %}
+<!--<link rel="stylesheet" href="{{url_for('static', filename='model.css')}}" type="text/css">-->
+<!--<script type="text/javascript" src="{{url_for('static', filename='model.js')}}"></script>-->
+<link rel="stylesheet" href="/static/model.css" type="text/css">
+<script type="text/javascript" src="/static/model.js"></script>
+<body class="iris_body">
+
+{% include 'navigation.html' %}
+
+<!-- Flash Message -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }} message">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<!-------------->
+
+
+<div id="problem_statement">
+
+    <h2 style="color: #22D3EE;">I. Domain: </h2>
+    <p>
+        <b>Agriculture</b>.
+    </p>
+
+    <h2 style="color: #22D3EE;">II. Class: </h2>
+    <p>
+        <b>Supervised</b>.
+    </p>
+
+    <h2 style="color: #22D3EE;">III. Type: </h2>
+    <p>
+        <b>Classification (Multiclass)</b>.
+    </p>
+
+    <div style="height: auto; margin-left: 20px; border: 2px solid #22D3EE; border-radius: 5px;">
+        <a style="padding-left: 10px; padding-top: 5px; padding-bottom: 5px; font-family: 'Comfortaa', cursive;" href="{{ url_for('original_data') }}" target="_blank">
+            <b style="color: #22D3EE;">Want to see the original dataset ?</b></a>
+    </div>
+
+    <h2>1. Problem Statement: </h2>
+    <p>
+        We need to classify species of Iris flower based on some features of the flower.
+    </p>
+
+    <h2>2. Problem Type: </h2>
+    <p>
+        <b>Multiclass Classification</b>. There are 3 species given namely:
+    </p>
+    <ul>
+        <li><b><i>Iris Setosa.</i></b></li>
+        <li><b><i>Iris Versicolor.</i></b></li>
+        <li><b><i>Iris Virginica</i></b></li>
+    </ul>
+
+    <h2>3. Dataset: </h2>
+    <p>
+        The dataset can be found on <a href="https://www.kaggle.com/uciml/iris" target="_blank"><b style="color: #22D3EE;">Kaggle</b></a>.
+        The <b>Training</b> dataset contains <i>150 rows x 5 columns</i>. The columns are <b>Id, SepalLengthCm, SepalWidthCm, PetalLengthCm, PetalWidthCm</b>.
+    </p>
+
+    <h2>4. Tools/Libraries Used: </h2>
+    <ul>
+        <li>Programming Language Used:
+            <ul>
+                <li>Python 3.8</li>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>Javascript</li>
+            </ul>
+        </li>
+        <li>File Types Used:
+            <ul>
+                <li>.py</li>
+                <li>.html</li>
+                <li>.css</li>
+                <li>.js</li>
+                <li>.env</li>
+                <li>.gitignore</li>
+                <li>.gcloudignore</li>
+                <li>.pickle</li>
+                <li>.conf</li>
+                <li>.txt</li>
+                <li>.log</li>
+                <li>Dockerfile</li>
+            </ul>
+        </li>
+        <li>Libraries Used:
+            <ul>
+                <li>scikit-Learn</li>
+                <li>matplotlib</li>
+                <li>numpy</li>
+                <li>pandas</li>
+                <li>seaborn</li>
+                <li>statsmodels</li>
+                <li>dataprep</li>
+                <li>pickle</li>
+                <li>logging</li>
+                <li>yaml</li>
+                <li>flask</li>
+                <li>wtforms</li>
+                <li>scipy</li>
+                <li>dotenv</li>
+            </ul>
+        </li>
+        <li>Tools Used:
+            <ul>
+                <li>Pycharm IDE</li>
+                <li>Jupyter Notebook</li>
+                <li>Apache Cassandra</li>
+                <li>Docker</li>
+                <li>Google Cloud Platform</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>5. Steps taken to train the model: </h2>
+    <ul>
+        <li>For Upload Data:
+            <ul>
+                <li>Load the dataset using <b>Pandas</b>.</li>
+                <li>Checking for unnecessary columns.</li>
+                <li>Check for <b>Imbalanced</b> dataset, since this is a classification problem</li>
+                <li>Checking for <b>Correlation</b>.</li>
+                <li>Checking for <b>Outliers</b>.</li>
+                <li>Checking for <b>Missing, NaN</b> values.</li>
+                <li>Checking the <b>Distribution</b> of columns/features, especially <b>Gaussian Distribution</b>.</li>
+                <li>Used <b>Label Encoder</b> to encode the target values</li>
+                <li>Used <b>Standard Scaler</b> transformer to standardize the data</li>
+                <li>Used <b>Train Test Split</b>.</li>
+                <li><b>Fit</b> the model with the following algorithms:
+                    <ul>
+                        <li><b>Logistic Regression</b>.</li>
+                        <li><b>K Nearest Neighbors</b>.</li>
+                        <li><b>SVC</b>.</li>
+                        <li><b>Decision Tree</b>.</li>
+                        <li><b>Random Forest</b>.</li>
+                        <li><b>Ada Boost</b>.</li>
+                        <li><b>Gradient Boosting</b>.</li>
+                        <li><b>Extra Trees</b>.</li>
+                        <li><b>XGBoost</b>.</li>
+                        <li><b>Gaussian Naive Bayes</b>.</li>
+                        <li><b>Multilayer Perceptron Classifier</b>.</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>For Demo Data:
+            <ul>
+                <li>The demo csv has been uploaded to <b>Cassandra</b> database</li>
+                <li>The data is requested from the database whenever necessary</li>
+                <li>Necessary prediction is done based on the selected model on the data</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>6. Validation: </h2>
+    <p>
+        The fitted model has been validated with <b>K Fold Cross Validation</b>.
+    </p>
+
+    <h2>7. Prediction: </h2>
+    <p>
+        The fitted and validated model has been used for <b>Prediction</b> of the test data.
+    </p>
+
+    <h2>8. Metrics Calculation: </h2>
+    <p>
+        Different classification metrics are used to check the efficiency of the validated model given the actual data:
+    </p>
+    <ul>
+        <li><b>Accuracy Score</b>.</li>
+        <li><b>Classification Report</b>.</li>
+        <li><b>F1 Score</b>.</li>
+        <li><b>Precision Score</b>.</li>
+        <li><b>Recall Score</b>.</li>
+        <li><b>Confusion Matrix</b>.</li>
+    </ul>
+    <h2>9. Notebook: </h2>
+    <p>
+        <a href="https://github.com/pritamsinha2304/Machine-Learning-Iris-classification" target="_blank"><b style="color: #22D3EE;">Link to .ipynb notebook</b></a>
+    </p>
+</div>
+
+<div id="form_div">
+    <h2>Upload Data</h2>
+    <p style="font-family: 'Comfortaa', cursive; padding-left: 30px; color: #F87171"><b>* Use this form if you have your data available</b></p>
+    <form method="post" enctype="multipart/form-data" id="form">
+        {{ predict_form.hidden_tag() }}
+
+        <h4>Upload the <b>test data</b> in <b>.csv</b> format.</h4>
+        <h4><b style="color: #F87171">* Required</b></h4>
+        {{ predict_form.predict_file }}
+        {% for error in predict_form.predict_file.errors %}
+            <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+
+        <h4>Select which <b>Model</b> to use to predict.</h4>
+        <h4><b style="color: #F87171">* Required</b></h4>
+        {{ predict_form.model_to_use }}
+        {% for error in predict_form.model_to_use.errors %}
+            <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+
+        <h4>Upload the <b>actual data</b> in <b>.csv</b> format (if available).</h4>
+        <h4><b style="color: #22D3EE">Optional</b></h4>
+        {{ predict_form.actual_file }}
+        {% for error in predict_form.actual_file.errors %}
+            <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+
+        {{ predict_form.upload }}
+        {% for error in predict_form.upload.errors %}
+            <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+
+    </form>
+</div>
+
+
+<div id="just_want_form_div">
+    <h2>Demo Data</h2>
+    <p style="font-family: 'Comfortaa', cursive; padding-left: 30px; color: #F87171"><b>* Use this form if you just want to see how it looks, and you don't have your data available.</b></p>
+    <p style="font-family: 'Comfortaa', cursive; padding-left: 30px; color: #F87171">* The data used is just <b>Dummy Data</b> for testing.</p>
+    <form method="post" enctype="multipart/form-data" id="form">
+        {{ just_form.csrf_token }}
+
+        <h4>Select which <b>Model</b> to use to predict.</h4>
+        <h4><b style="color: #F87171">* Required</b></h4>
+        {{ just_form.model_to_use_just }}
+        {% for error in just_form.model_to_use_just.errors %}
+            <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+
+        {{ just_form.upload_just }}
+        {% for error in just_form.upload_just.errors %}
+            <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+
+    </form>
+</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Stat-metrics</title>
+{% include 'html_head.html' %}
+<script type="text/javascript" src="/static/model.js"></script>
+<link rel="stylesheet" href="/static/model.css" type="text/css">
+<body class="stat_metric_body">
+
+{% include 'navigation.html' %}
+
+<!-- Flash Message -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert alert-{{ category }} message">
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<!-------------->
+<div class="stat_div">
+    <h2>{{ table['model_name'] }}</h2>
+    <h3>Configuration Used: </h3>
+    <table id="config_id" class="display nowrap cell-border" style="width:100%">
+        <caption style="text-align:center; font-weight: bold;">Table 1: Configuration used</caption>
+        <thead style="width:100%">
+        <tr>
+            <th>Parameters</th>
+            <th>Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for key, value in table['configuration'].items() %}
+        <tr>
+            <td>{{ key }}</td>
+            <td>{{ value }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Predicted outcomes: </h3>
+    <table id="example" class="display nowrap cell-border" style="width:100%">
+        <caption style="text-align:center; font-weight: bold;">Table 2: Predicted outcomes</caption>
+        <thead style="width:100%">
+        <tr>
+            <th colspan="{{ table['main'][0].keys() | length }}" style="border-top: 2px solid black;">Input/Independent Variables</th>
+            <th colspan="3" style="border-top: 2px solid black;">Predicted/Dependent Variables</th>
+            {% if 'actual' in table %}
+                <th colspan="1" style="border-top: 2px solid black;">Actual Variables</th>
+            {% endif %}
+        </tr>
+        <tr>
+            {% for key in table['main'][0].keys() %}
+                <th>{{ key }}</th>
+            {% endfor %}
+            <th>Species Name (Encoded)</th>
+            <th>Species Name</th>
+            <th>Probability</th>
+            {% if 'actual' in table %}
+                <th>Species Name</th>
+            {% endif %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for le in range(0, table['main'] | length) %}
+        <tr>
+            {% for value in table['main'][le].values() %}
+                <td>{{ value }}</td>
+            {% endfor %}
+            <td>{{ table['prediction'][le] }}</td>
+            <td>{{ table['label_prediction'][le] }}</td>
+            <td>{{ table['probabilities_percent'][le] }}</td>
+            {% if 'actual' in table %}
+                <td>{{ table['actual'][le]['Species'] }}</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+
+{% if 'label_classes' in table %}
+<div class="encode_div">
+    <h2>Encoded Class</h2>
+    <table id="encode_id" class="display nowrap cell-border" style="width:100%">
+        <caption style="text-align:center; font-weight: bold;">Table 3: Encoded output variables</caption>
+        <thead style="width:100%">
+        <tr>
+            <th>Class</th>
+            <th>Encoded Class</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for key, value in table['label_classes'].items() %}
+        <tr>
+            <td>{{ key }}</td>
+            <td>{{ value }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+{% endif %}
+
+{% if 'metrics' in table %}
+<div class="metric_div">
+    <h2>Metrics</h2>
+
+    <h4>1. Accuracy : {{ table['metrics']['accuracy'] * 100 }} %</h4>
+
+    <h4>2. Negative Log Loss : {{ table['metrics']['log_loss'] }} </h4>
+
+    <!-- Confusion Matrix -->
+    <h4>3. Confusion Matrix: </h4>
+    <table id="example1" class="display nowrap cell-border" style="width:100%">
+        <caption style="text-align:center; font-weight: bold;">Table 4: Confusion matrix</caption>
+        <thead>
+            <tr>
+                <th colspan="2" style="border-bottom: 0px;"></th>
+                {% for i in range(0, table['metrics']['confusion_matrix'].keys() | length) %}
+                    <th>Predicted</th>
+                {% endfor %}
+            </tr>
+            <tr>
+                <th style="border-top: 0px; border-right: 0px;"></th>
+                <th style="border-top: 0px; border-left: 0px;"></th>
+                {% for key in table['metrics']['confusion_matrix'].keys() %}
+                    <th>{{ key }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for key in table['metrics']['confusion_matrix'].keys() %}
+                <tr>
+                    <td>Actual</td>
+                    <td>{{ key }}</td>
+                    {% for value in table['metrics']['confusion_matrix'][key].values() %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    <!-- Classification Report -->
+    <h4>4. Classification Report: </h4>
+    <table id="example2" class="display nowrap cell-border" style="width:100%">
+        <caption style="text-align:center; font-weight: bold;">Table 5: Classification report</caption>
+        <thead>
+            <tr>
+                <th></th>
+                {% for key in table['metrics']['classification_report'][(table['metrics']['classification_report'].keys() | list)[0]].keys() %}
+                    <th>{{ key }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for key in table['metrics']['classification_report'].keys() %}
+                <tr>
+                    <td>{{ key }}</td>
+                    {% for value in table['metrics']['classification_report'][key].values() %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+</div>
+{% endif %}
+
+</body>
+
+<script>
+$('#config_id').DataTable( {
+    'fixedHeader': true,
+    "responsive": true,
+    "scrollX": true,
+    'lengthMenu': [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+    'lengthChange': true,
+    'dom': 'Blfrtip',
+    'pagingType': "full_numbers",
+    'buttons': [ 'copy', 'excel', 'pdf', 'csv', 'print', 'colvis' ]
+});
+
+ $('#example').DataTable( {
+    'fixedHeader': true,
+    "responsive": true,
+    "scrollX": true,
+    'lengthMenu': [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+    'lengthChange': true,
+    'dom': 'Blfrtip',
+    'pagingType': "full_numbers",
+    'buttons': [ 'copy', 'excel', 'pdf', 'csv', 'print', 'colvis' ]
+});
+
+$('#encode_id').DataTable( {
+    'fixedHeader': true,
+    "responsive": true,
+    "scrollX": true,
+    'lengthMenu': [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+    'lengthChange': true,
+    'dom': 'Blfrtip',
+    'pagingType': "full_numbers",
+    'buttons': [ 'copy', 'excel', 'pdf', 'csv', 'print', 'colvis' ]
+});
+
+$('#example1').DataTable( {
+    'fixedHeader': false,
+    "responsive": true,
+    'lengthMenu': [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+    'lengthChange': true,
+    'dom': 'Blfrtip',
+    'scrollX': true,
+    "pagingType": "full_numbers",
+    'buttons': [ 'copy', 'excel', 'pdf', 'csv', 'print', 'colvis' ]
+});
+
+$('#example2').DataTable( {
+    'fixedHeader': false,
+    "responsive": true,
+    'lengthMenu': [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+    'lengthChange': true,
+    'dom': 'Blfrtip',
+    'scrollX': true,
+    "pagingType": "full_numbers",
+    'buttons': [ 'copy', 'excel', 'pdf', 'csv', 'print', 'colvis' ]
+});
+
+</script>
+
+</html>

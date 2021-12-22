@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Models/NLP/Conversation/blenderbot_small-90M" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Models/NLP/Fill Mask/bert-base-multilingual-cased" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Models/NLP/Fill Mask/distilbert-base-multilingual-cased" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Models/NLP/Text Generation/distilgpt2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Models/NLP/Text Generation/gpt2" vcs="Git" />
+  </component>
+</project>
