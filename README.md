@@ -1,6 +1,6 @@
-# Machine Learning App
+<h1> Machine Learning App</h1>
 
-## Introduction.
+<h2> Introduction </h2>
 <p>Since the advent of machine learning, various app, websites, blogs uses various techniques, styles to use power of AI to train and give their customer the advantage or prediction of what about to come. If a person knows what is coming, he/she can prepare for the worst and avoid the worst case. This has been made possible by various machine learning, deep learning etc. techniques. </p>
 
 <p>With the development of machine learning with ages, various improvement, techniques has been developed to harness the power of machine learning to tachle all kinds of problems or more precisely to be used on various problems. Various techniques include- </p>
@@ -22,9 +22,9 @@ Reinforcement Learning is all about self learning.
 
 Since these techniques work on different inputs so various of these techniques can be applied to various kinds of problems to tackle/predict the best solution possible.
 
-## What does it do ?
+<h2> What does it do ? </h2>
 
-### Home Page
+<h3> Home Page </h3>
 
 <img src="/static/Screenshot 2021-12-22 202851.png" alt="main_page" />
 
@@ -39,7 +39,7 @@ Since these techniques work on different inputs so various of these techniques c
     <li>Validation</li>
 </ul>
 
-### Projects
+<h3> Projects </h3>
 
 <img src="" alt="projects" />
 
@@ -59,7 +59,11 @@ Since these techniques work on different inputs so various of these techniques c
 </ul>
 etc.
 
-#### a) Iris Classification
+Each projects has a litle detailed information about the problem, its type, steps taken, dataset etc. Each projects has 2 types of forms, one is prediction form and one is the demo form.
+The <b>prediction form</b> takes on user data as inputs and do the necessary EDA and ouput the results.
+The <b>demo form</b> is for the users who do not have their own data, they just want to see what it does.
+
+<h4> a) Iris Classification </h4>
 
 <h2>1. Problem Statement: </h2>
 <p>
@@ -79,65 +83,9 @@ etc.
 <h2>3. Dataset: </h2>
 <p>
   The dataset can be found on <a href="https://www.kaggle.com/uciml/iris" target="_blank"><b style="color: #22D3EE;">Kaggle</b></a>.
-  The <b>Training</b> dataset contains <i>150 rows x 5 columns</i>. The columns are <b>Id, SepalLengthCm, SepalWidthCm, PetalLengthCm, PetalWidthCm</b>.
 </p>
 
-<h2>4. Tools/Libraries Used: </h2>
-<ul>
-  <li>Programming Language Used:
-      <ul>
-          <li>Python 3.8</li>
-          <li>HTML</li>
-          <li>CSS</li>
-          <li>Javascript</li>
-      </ul>
-  </li>
-  <li>File Types Used:
-      <ul>
-          <li>.py</li>
-          <li>.html</li>
-          <li>.css</li>
-          <li>.js</li>
-          <li>.env</li>
-          <li>.gitignore</li>
-          <li>.gcloudignore</li>
-          <li>.pickle</li>
-          <li>.conf</li>
-          <li>.txt</li>
-          <li>.log</li>
-          <li>Dockerfile</li>
-      </ul>
-  </li>
-  <li>Libraries Used:
-      <ul>
-          <li>scikit-Learn</li>
-          <li>matplotlib</li>
-          <li>numpy</li>
-          <li>pandas</li>
-          <li>seaborn</li>
-          <li>statsmodels</li>
-          <li>dataprep</li>
-          <li>pickle</li>
-          <li>logging</li>
-          <li>yaml</li>
-          <li>flask</li>
-          <li>wtforms</li>
-          <li>scipy</li>
-          <li>dotenv</li>
-      </ul>
-  </li>
-  <li>Tools Used:
-      <ul>
-          <li>Pycharm IDE</li>
-          <li>Jupyter Notebook</li>
-          <li>Apache Cassandra</li>
-          <li>Docker</li>
-          <li>Google Cloud Platform</li>
-      </ul>
-  </li>
-</ul>
-
-<h2>5. Steps taken to train the model: </h2>
+<h2>4. Steps taken to train the model: </h2>
 <ul>
   <li>For Upload Data:
       <ul>
@@ -177,17 +125,17 @@ etc.
   </li>
 </ul>
 
-<h2>6. Validation: </h2>
+<h2>5. Validation: </h2>
 <p>
   The fitted model has been validated with <b>K Fold Cross Validation</b>.
 </p>
 
-<h2>7. Prediction: </h2>
+<h2>6. Prediction: </h2>
 <p>
   The fitted and validated model has been used for <b>Prediction</b> of the test data.
 </p>
 
-<h2>8. Metrics Calculation: </h2>
+<h2>7. Metrics Calculation: </h2>
 <p>
   Different classification metrics are used to check the efficiency of the validated model given the actual data:
 </p>
