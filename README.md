@@ -174,7 +174,7 @@ Different classification metrics are used to check the efficiency of the validat
 
 <h3> c) Fake News Classification </h3>
 
-<img src="/static/fakenews_single_upload.png" alt="fakenews_single" width="30%" /> <img src="/static/fakenews_multiple_upload" alt="fakenews_multiple" width="30%" /> <img src="/static/fakenews_demo" alt="fakenews_demo" width="30%" /> <img src="/static/fakenews_result" alt="fakenews_result" width="30%" />
+<img src="/static/fakenews_single_upload.png" alt="fakenews_single" width="30%" /> <img src="/static/fakenews_multiple_upload.png" alt="fakenews_multiple" width="30%" /> <img src="/static/fakenews_demo.png" alt="fakenews_demo" width="30%" /> <img src="/static/fakenews_result.png" alt="fakenews_result" width="30%" />
 
 <h3>1. Dataset: </h3>
   <p>
@@ -219,9 +219,9 @@ Different classification metrics are used to check the efficiency of the validat
 
 <h3> d) Mask Token Prediction </h3>
 
-  Using the models **BERT** and **DistilBERT** from [Huggingface](https://huggingface.co)
+  Using the models **BERT** and **DistilBERT** from <a href="https://huggingface.co/" target="_blank">Huggingface</a>
   
-  <img src="/static/mask_upload.png" alt="mask_upload" width="30%" /> <img src="mask_result" alt="mask_result" width="30%" />
+  <img src="/static/mask_upload.png" alt="mask_upload" width="30%" /> <img src="/static/mask_result" alt="mask_result" width="30%" />
   
 <h3> e) Text Generation </h3>
 
