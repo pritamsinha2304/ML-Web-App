@@ -174,7 +174,7 @@ Different classification metrics are used to check the efficiency of the validat
 
 <h3> c) Fake News Classification </h3>
 
-<img src="" alt="" width="30%" /> <img src="" alt="" width="30%" /> <img src="" alt="" width="30%" />
+<img src="/static/fakenews_single_upload.png" alt="fakenews_single" width="30%" /> <img src="/static/fakenews_multiple_upload" alt="fakenews_multiple" width="30%" /> <img src="fakenews_demo" alt="fakenews_demo" width="30%" />
 
 <h3>1. Dataset: </h3>
   <p>
