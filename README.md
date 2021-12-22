@@ -174,7 +174,7 @@ Different classification metrics are used to check the efficiency of the validat
 
 <h3> c) Fake News Classification </h3>
 
-<img src="/static/fakenews_single_upload.png" alt="fakenews_single" width="30%" /> <img src="/static/fakenews_multiple_upload" alt="fakenews_multiple" width="30%" /> <img src="fakenews_demo" alt="fakenews_demo" width="30%" />
+<img src="/static/fakenews_single_upload.png" alt="fakenews_single" width="30%" /> <img src="/static/fakenews_multiple_upload" alt="fakenews_multiple" width="30%" /> <img src="/static/fakenews_demo" alt="fakenews_demo" width="30%" /> <img src="/static/fakenews_result" alt="fakenews_result" width="30%" />
 
 <h3>1. Dataset: </h3>
   <p>
@@ -221,16 +221,16 @@ Different classification metrics are used to check the efficiency of the validat
 
   Using the models **BERT** and **DistilBERT** from [Huggingface](https://huggingface.co)
   
-  <img src="" alt="" width="30%" /> <img src="" alt="" width="30%" />
+  <img src="/static/mask_upload.png" alt="mask_upload" width="30%" /> <img src="mask_result" alt="mask_result" width="30%" />
   
 <h3> e) Text Generation </h3>
 
   Using the models **GPT2** and **DistilGPT2** from [Huggingface](https://huggingface.co)
   
-  <img src="" alt="" width="30%" /> <img src="" alt="" width="30%" />
+  <img src="/static/textgenerate_upload.png" alt="textgenerate_upload" width="30%" /> <img src="/static/textgenerate_result.png" alt="textgenerate_result" width="30%" />
   
-<h3> e) Conversation </h3>
+<h3> f) Conversation </h3>
 
   Using the models **Blender Bot Small** from [Huggingface](https://huggingface.co)
   
-  <img src="" alt="" width="30%" /> <img src="" alt="" width="30%" />
+  <img src="/static/conversation_upload.png" alt="conversation_upload" width="30%" /> <img src="/static/conversation_result.png" alt="conversation_result" width="30%" />
