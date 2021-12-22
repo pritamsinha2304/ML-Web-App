@@ -26,7 +26,7 @@ Since these techniques work on different inputs so various of these techniques c
 
 <h3> Home Page </h3>
 
-<img src="/static/Screenshot 2021-12-22 202851.png" alt="main_page" />
+<img src="/static/main_page.png" alt="main_page" width="30%"/>
 
 <p>This web app takes on user inputs and give out prediction based on user options. It takes on user's data as inputs and gives various metrics and prediction in tabular.</p>
 
