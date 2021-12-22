@@ -63,31 +63,16 @@ Each projects has a litle detailed information about the problem, its type, step
 The <b>prediction form</b> takes on user data as inputs and do the necessary EDA and ouput the results.
 The <b>demo form</b> is for the users who do not have their own data, they just want to see what it does.
 
-<h4> a) Iris Classification </h4>
+<h3> a) Iris Classification </h3>
 
-<img src="/static/iris_upload.png" alt="iris_upload" width="23%"/> <img src="/static/iris_demo.png" alt="iris_demo" width="23%"/> <img src="/static/iris_result.png" alt="iris_result" width="23%"/> <img src="/static/iris_full.png" alt="iris_full" width="23%"/>
+<img src="/static/iris_upload.png" alt="iris_upload" width="30%"/> <img src="/static/iris_demo.png" alt="iris_demo" width="30%"/> <img src="/static/iris_result.png" alt="iris_result" width="30%"/>
 
-<h2>1. Problem Statement: </h2>
-<p>
-  We need to classify species of Iris flower based on some features of the flower.
-</p>
-
-<h2>2. Problem Type: </h2>
-<p>
-  <b>Multiclass Classification</b>. There are 3 species given namely:
-</p>
-<ul>
-  <li><b><i>Iris Setosa.</i></b></li>
-  <li><b><i>Iris Versicolor.</i></b></li>
-  <li><b><i>Iris Virginica</i></b></li>
-</ul>
-
-<h2>3. Dataset: </h2>
+<h2>1. Dataset: </h2>
 <p>
   The dataset can be found on <a href="https://www.kaggle.com/uciml/iris" target="_blank"><b style="color: #22D3EE;">Kaggle</b></a>.
 </p>
 
-<h2>4. Steps taken to train the model: </h2>
+<h2>2. Steps taken to train the model: </h2>
 <ul>
   <li>For Upload Data:
       <ul>
@@ -127,17 +112,7 @@ The <b>demo form</b> is for the users who do not have their own data, they just 
   </li>
 </ul>
 
-<h2>5. Validation: </h2>
-<p>
-  The fitted model has been validated with <b>K Fold Cross Validation</b>.
-</p>
-
-<h2>6. Prediction: </h2>
-<p>
-  The fitted and validated model has been used for <b>Prediction</b> of the test data.
-</p>
-
-<h2>7. Metrics Calculation: </h2>
+<h2>3. Metrics Calculation: </h2>
 <p>
   Different classification metrics are used to check the efficiency of the validated model given the actual data:
 </p>
@@ -153,6 +128,6 @@ The <b>demo form</b> is for the users who do not have their own data, they just 
 
 <h4> b) Cat Dog Classification </h4>
 
-<img src="" alt="cat_dog" />
+<img src="cog_upload.png" alt="cog_upload" width="30%"/> <img src="cog_demo.png" alt="cog_demo" width="30%"/> <img src="cog_result.png" alt="cog_result" width="30%"/>
 
 
