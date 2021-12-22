@@ -67,12 +67,12 @@ The <b>demo form</b> is for the users who do not have their own data, they just 
 
 <img src="/static/iris_upload.png" alt="iris_upload" width="30%"/> <img src="/static/iris_demo.png" alt="iris_demo" width="30%"/> <img src="/static/iris_result.png" alt="iris_result" width="30%"/>
 
-<h2>1. Dataset: </h2>
+<h3>1. Dataset: </h3>
 <p>
   The dataset can be found on <a href="https://www.kaggle.com/uciml/iris" target="_blank"><b style="color: #22D3EE;">Kaggle</b></a>.
 </p>
 
-<h2>2. Steps taken to train the model: </h2>
+<h3>2. Steps taken to train the model: </h3>
 <ul>
   <li>For Upload Data:
       <ul>
@@ -112,7 +112,7 @@ The <b>demo form</b> is for the users who do not have their own data, they just 
   </li>
 </ul>
 
-<h2>3. Metrics Calculation: </h2>
+<h3>3. Metrics Calculation: </h3>
 <p>
   Different classification metrics are used to check the efficiency of the validated model given the actual data:
 </p>
@@ -126,8 +126,48 @@ The <b>demo form</b> is for the users who do not have their own data, they just 
 </ul>
 
 
-<h4> b) Cat Dog Classification </h4>
+<h3> b) Cat Dog Classification </h3>
 
-<img src="cog_upload.png" alt="cog_upload" width="30%"/> <img src="cog_demo.png" alt="cog_demo" width="30%"/> <img src="cog_result.png" alt="cog_result" width="30%"/>
+<img src="/static/cog_upload.png" alt="cog_upload" width="30%"/> <img src="/static/cog_demo.png" alt="cog_demo" width="30%"/> <img src="/static/cog_result.png" alt="cog_result" width="30%"/>
 
+<h3>1. Dataset: </h3>
+<p>
+    The dataset can be found on <a href="https://www.kaggle.com/c/dogs-vs-cats" target="_blank"><b style="color: #22D3EE;">Kaggle</b></a>.
+</p>
+
+<h3>2. Steps taken to train the model: </h3>
+<ul><li>Create the CNN architecture. Here 2 kinds of architecture are used to train:
+    <ul>
+        <li>Simple Custom CNN <a href="/static/CatDog.svg" target="_blank" ><b style="color: #22D3EE;">architecture</b></a></li>
+        <li>Transfer Learning using Resnet50 <a href="/static/CatDogResnet50.svg" target="_blank" ><b style="color: #22D3EE;">architecture</b></a></li>
+    </ul>
+</li>
+<li>Load the images in the directory.</li>
+<li>Read the images via <b>Keras</b> with size of <b>256x256</b> for simple model and <b>224x224</b> for the resnet50 model.</li>
+<li>Split the images for the <b>Train Validation Split</b>.</li>
+<li>Construct the layers for the simple architecture or using transfer learning for the resnet50 architecture</li>
+<li><b>Fit</b> the model with the CNN architecture with <b>10</b> epochs and batch size of <b>32</b>.</li>
+</ul>
+<p><b style="color:red;">NOTE:</b>Even though the dataset contains altogether around <b>24000</b> images of cats and dogs.
+The training process actually has been done on around <b>6000</b> images of cats and around <b>6000</b> images of dogs for the both architecture, due to the limitation of hardware or processing power.
+As a result of these, the validation accuracy, with validation split as <b>0.2</b>, is around <b>74%</b> for the simple cnn model and around <b>97%</b> for the resnet50 model.
+So, the predicted result might show some discrepancies in accuracy or also might get wrong result.
+In case of transfer learning with ResNet50, the layers are not trained again, <b>imagenet</b> weights are been used.
+</p>
+<p><b style="color:red;">NOTE:</b>The number of epochs is chosen to be this small because of limitation of processing power.
+This took around 5 hours to train. Since the epochs are small, the <b>accuracy</b> is around <b>94.49%</b> for the simple model and <b>99.63%</b> for the resnet50 model.
+</p>
+
+<h3>3. Metrics Calculation: </h3>
+<p>
+Different classification metrics are used to check the efficiency of the validated model given the actual data:
+</p>
+<ul>
+<li><b>Accuracy Score</b>.</li>
+<li><b>Classification Report</b>.</li>
+<li><b>F1 Score</b>.</li>
+<li><b>Precision Score</b>.</li>
+<li><b>Recall Score</b>.</li>
+<li><b>Confusion Matrix</b>.</li>
+</ul>
 
